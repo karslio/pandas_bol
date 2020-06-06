@@ -64,11 +64,11 @@ options.add_argument("user-data-dir=C:\\Users\\Lenovo Thinkpad\\AppData\\Local\\
 options.add_argument('--profile-directory=Profile 2')
 browser = webdriver.Chrome(options=options)
 
-page = 8
+page = 1
 urun = 1
 while True:
     browser.get(
-        f"https://www.bol.com/nl/l/alle-artikelen/?page={page}&availability=non")  # bol page linki
+        f"https://www.bol.com/nl/l/sport-spel/N/10498/?page={page}")  # bol page linki
     time.sleep(2)
     nextButton = browser.find_elements_by_css_selector(
         "#js_pagination_control > ul > li.\[.pagination__controls.pagination__controls--next.\] > a")  # next button var mi yok mu ?
@@ -103,7 +103,7 @@ while True:
         get_product_info(productEan)
         print(
             f"page: {page} urun:{urun - 1}, {PEan[len(PEan) - 1]}, {PbolPrice[len(PbolPrice) - 1]}, {PamazonPrice[len(PamazonPrice) - 1]}, {Text1[len(Text1) - 1]}, {Text2[len(Text2) - 1]}, {Text3[len(Text3) - 1]}, {Text4[len(Text4) - 1]}")
-        with open('alle-artikelen.csv', mode='a', newline='') as f:
+        with open('sport-spel.csv', mode='a', newline='') as f:
             products_writer = csv.writer(f, delimiter=',', )
             products_writer.writerow([page, urun, PEan[len(PEan) - 1],
                                       PbolUrl[len(PbolUrl) - 1], PbolPrice[len(PbolPrice) - 1],
